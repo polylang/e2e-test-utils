@@ -1,11 +1,22 @@
+import { getAllLanguages, deleteAllLanguages } from './languages/index.js';
+import { resetAllSettings, setSetting, getSettings } from './settings/index.js';
+import {
+	getAllTerms,
+	deleteAllTerms,
+	getTermBySlug,
+} from './taxonomies/index.js';
+import { getPlaywrightConfig } from './config/index.js';
+import globalSetup from './setup/global.setup.js';
+
 export {
-	getLanguage,
 	getAllLanguages,
-	createLanguage,
-	deleteLanguage,
 	deleteAllLanguages,
-} from './languages';
-export { resetAllSettings, setSetting, getSettings } from './settings';
-export { getAllTerms, deleteAllTerms, getTermBySlug } from './taxonomies';
-export { getPlaywrightConfig } from './config';
-export { default as globalSetup } from './setup/global.setup';
+	resetAllSettings,
+	setSetting,
+	getSettings,
+	getAllTerms,
+	deleteAllTerms,
+	getTermBySlug,
+	getPlaywrightConfig,
+	globalSetup,
+};

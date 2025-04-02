@@ -1,6 +1,7 @@
 import { request } from '@playwright/test';
 import { RequestUtils } from '@wordpress/e2e-test-utils-playwright';
-import { deleteAllLanguages, resetAllSettings } from '..';
+import { deleteAllLanguages } from '../languages/index.js';
+import { resetAllSettings } from '../settings/index.js';
 
 /**
  * Partially copied from Gutenberg and converted from Typescript.
