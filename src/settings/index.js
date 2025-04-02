@@ -66,7 +66,7 @@ export async function resetAllSettings( requestUtils ) {
 
 	/*
 	 * Don't mess with the default language.
-	 * If all languages has been deleted, `default_lang` will be set to empty string by the server anyway.
+	 * If all languages have been deleted, `default_lang` will be set to empty string by the server anyway.
 	 */
 	delete params.default_lang;
 
