@@ -1,0 +1,23 @@
+{
+	"name": "@wpsyntex/e2e-test-utils",
+	"version": "0.1.0",
+	"description": "End-to-end test utilities for Polylang projects.",
+	"main": "src/index.js",
+	"scripts": {
+		"lint:js": "wp-scripts lint-js"
+	},
+	"keywords": [
+		"polylang",
+		"e2e",
+		"playwright",
+		"wordpress"
+	],
+	"author": "WP Syntex",
+	"license": "GPL-2.0-or-later",
+	"peerDependencies": {
+		"@playwright/test": ">=1"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.14.1"
+	}
+}
