@@ -1,0 +1,25 @@
+name: Static Analysis
+
+on:
+  push:
+    branches: master
+  pull_request:
+    branches: master
+  workflow_dispatch:
+
+jobs:
+  js:
+    name: ESLint
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the source code
+      uses: actions/checkout@v4
+
+    - name: Run ESLint
+      uses: polylang/actions/eslint@main
+      with:
+        do-js: true
+        js-path: './src'
+        do-style: false
