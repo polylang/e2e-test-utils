@@ -1,4 +1,10 @@
-import { getAllLanguages, deleteAllLanguages } from './languages/index.js';
+import {
+	getAllLanguages,
+	deleteAllLanguages,
+	getLanguage,
+	createLanguage,
+	deleteLanguage,
+} from './languages/index.js';
 import { resetAllSettings, setSetting, getSettings } from './settings/index.js';
 import {
 	getAllTerms,
@@ -11,6 +17,9 @@ import globalSetup from './setup/global.setup.js';
 export {
 	getAllLanguages,
 	deleteAllLanguages,
+	getLanguage,
+	createLanguage,
+	deleteLanguage,
 	resetAllSettings,
 	setSetting,
 	getSettings,
