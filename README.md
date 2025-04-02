@@ -5,7 +5,7 @@ This package provides shared E2E testing utilities for Polylang projects.
 ## 📦 Installation
 
 ```bash
-npm install --save-dev @wpsyntex/e2e-test-utils
+npm install --save-dev polylang/e2e-test-utils
 ```
 
 ## 🚀 Usage
@@ -140,10 +140,10 @@ Global setup function for Playwright tests. Ensures fixtures are deleted and glo
 #### 💡 Usage Example
 
 ```javascript
-import { 
-  createLanguage, 
-  setSetting, 
-  getAllTerms 
+import {
+  createLanguage,
+  setSetting,
+  getAllTerms
 } from '@wpsyntex/e2e-test-utils';
 
 // Create a new language
