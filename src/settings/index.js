@@ -29,9 +29,12 @@ export async function getSettings( requestUtils ) {
  */
 export async function setSetting( requestUtils, settingKey, settingValue ) {
 	return requestUtils.rest( {
+		headers: {
+			'Content-Type': 'application/json',
+		},
 		path: BASE_PATH,
-		method: 'PUT',
-		params: {
+		method: 'POST',
+		data: {
 			[ settingKey ]: settingValue,
 		},
 	} );
