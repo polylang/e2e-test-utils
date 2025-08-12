@@ -5,6 +5,9 @@ import {
 	createLanguage,
 	deleteLanguage,
 } from './languages/index.js';
+import {
+	saveTranslations,
+} from './translations/index.js';
 import { resetAllSettings, setSetting, getSettings } from './settings/index.js';
 import {
 	getAllTerms,
@@ -20,6 +23,7 @@ export {
 	getLanguage,
 	createLanguage,
 	deleteLanguage,
+	saveTranslations,
 	resetAllSettings,
 	setSetting,
 	getSettings,
