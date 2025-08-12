@@ -1,4 +1,8 @@
 /**
+ * @typedef {import('@wordpress/e2e-test-utils-playwright').RequestUtils} RequestUtils
+ */
+
+/**
  * Saves the translations for a post.
  *
  * @param {RequestUtils} requestUtils Gutenberg request utils object.
@@ -11,7 +15,7 @@ export async function saveTranslations( requestUtils, id, translations = {} ) {
 		path: `/wp/v2/posts/${ id }`,
 		method: 'POST',
 		data: {
-			translations
+			translations,
 		},
 	} );
 }
