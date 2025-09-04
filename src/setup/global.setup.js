@@ -30,6 +30,8 @@ export default async function globalSetup( config ) {
 		requestUtils.deleteAllMedia(),
 		requestUtils.deleteAllPosts(),
 		requestUtils.deleteAllBlocks(),
+		requestUtils.deleteAllPages(),
+		requestUtils.deleteAllMenus(),
 		requestUtils.resetPreferences(),
 		deleteAllLanguages( requestUtils ),
 		resetAllSettings( requestUtils ),
