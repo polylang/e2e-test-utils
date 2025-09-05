@@ -28,4 +28,3 @@ export const getDownload = async (
 export const getStringFromFile = ( filePath ) => {
 	return fs.readFileSync( filePath ).toString();
 };
-

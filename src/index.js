@@ -13,10 +13,7 @@ import {
 	getTermBySlug,
 } from './taxonomies/index.js';
 import { fillInXliffExportForm, getXliffRegex } from './xliff/index.js';
-import {
-	getDownload,
-	getStringFromFile,
-} from './downloads/index.js';
+import { getDownload, getStringFromFile } from './downloads/index.js';
 import { getPlaywrightConfig } from './config/index.js';
 import globalSetup from './setup/global.setup.js';
 
