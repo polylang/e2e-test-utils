@@ -131,29 +131,46 @@ Deletes all terms within a specific taxonomy.
   - `taxonomy`: Taxonomy slug
 - **Returns:** Promise resolving to the deletion results
 
+#### 📄 XLIFF Export Functions
+
+##### `fillInXliffExportForm( page, options )`
+Fills in the XLIFF export form for bulk translation export.
+- **Parameters:**
+  - `page`: Playwright page object
+  - `options`: Configuration object
+    - `postId`: Post ID to export
+    - `postTitle`: Post title to select
+    - `languageName`: Target language name
+- **Returns:** Promise that resolves when the export form is submitted
+- **Note:** Page should be on the post list table
+
+##### `getXliffRegex( sourceLocale, targetLocale )`
+Returns a regex pattern to match XLIFF file names with the specified locales and timestamp.
+- **Parameters:**
+  - `sourceLocale`: Source language locale (e.g., 'en_US')
+  - `targetLocale`: Target language locale (e.g., 'fr_FR')
+- **Returns:** RegExp object to match XLIFF file names
+- **Note:** Converts hyphens to underscores in locales and matches timestamp pattern
+
+#### 📥 Download Utilities
+
+##### `getDownload( page, submitButtonOptions )`
+Returns a download promise by clicking a submit button and waiting for the download to start.
+- **Parameters:**
+  - `page`: Playwright page object
+  - `submitButtonOptions`: Submit button options (default: `{ name: 'Submit' }`)
+- **Returns:** Promise resolving to the download object
+
+##### `getStringFromFile( filePath )`
+Reads a file and returns its contents as a string.
+- **Parameters:**
+  - `filePath`: The file path to read
+- **Returns:** String content of the file
+
 #### 🔧 Additional Exports
 
 ##### `globalSetup`
 
 Global setup function for Playwright tests. Ensures fixtures are deleted and global context is set up properly.
-
-#### 💡 Usage Example
-
-```javascript
-import {
-  createLanguage,
-  setSetting,
-  getAllTerms
-} from '@wpsyntex/e2e-test-utils';
-
-// Create a new language
-await createLanguage( requestUtils, 'fr_FR' );
-
-// Update a setting
-await setSetting( requestUtils, 'hide_default', true );
-
-// Get all terms from a taxonomy
-const terms = await getAllTerms( requestUtils, 'category' );
-```
 
 All these functions are designed to work with the Gutenberg request utils object and follow REST API patterns for interacting with Polylang's functionality. They provide a comprehensive set of tools for managing languages, settings, and taxonomies in E2E tests.

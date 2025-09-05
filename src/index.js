@@ -12,10 +12,9 @@ import {
 	deleteAllTerms,
 	getTermBySlug,
 } from './taxonomies/index.js';
-import { fillInXliffExportForm } from './xliff/index.js';
+import { fillInXliffExportForm, getXliffRegex } from './xliff/index.js';
 import {
 	getDownload,
-	getXliffRegex,
 	getStringFromFile,
 } from './downloads/index.js';
 import { getPlaywrightConfig } from './config/index.js';

@@ -29,17 +29,3 @@ export const getStringFromFile = ( filePath ) => {
 	return fs.readFileSync( filePath ).toString();
 };
 
-/**
- * Returns a regex to match the xliff file name.
- *
- * @param {string} sourceLocale The source language locale.
- * @param {string} targetLocale The target language locale.
- * @return {RegExp} Regex to match the xliff file name.
- */
-export const getXliffRegex = ( sourceLocale, targetLocale ) => {
-	return new RegExp(
-		// eslint-disable-next-line prettier/prettier
-		`${ sourceLocale.replace( '-', '_' ) }_${ targetLocale.replace( '-', '_' ) }
-		_\\d{4}-\\d{2}-\\d{2}_\\d{1,2}-\\d{2}-\\d{2}\\.xliff`
-	);
-};
