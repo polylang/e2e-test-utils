@@ -37,7 +37,6 @@ export const fillInXliffExportForm = async (
 export const getXliffRegex = ( sourceLocale, targetLocale ) => {
 	return new RegExp(
 		// eslint-disable-next-line prettier/prettier
-		`${ sourceLocale.replace( '-', '_' ) }_${ targetLocale.replace( '-', '_' ) }
-		_\\d{4}-\\d{2}-\\d{2}_\\d{1,2}-\\d{2}-\\d{2}\\.xliff`
+		`${ sourceLocale.replace( '_', '-' ) }_${ targetLocale.replace( '_', '-' ) }_\\d{4}-\\d{2}-\\d{2}_\\d{1,2}-\\d{2}-\\d{2}\\.xliff`
 	);
 };
