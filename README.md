@@ -150,7 +150,7 @@ Returns a regex pattern to match XLIFF file names with the specified locales and
   - `sourceLocale`: Source language locale (e.g., 'en_US')
   - `targetLocale`: Target language locale (e.g., 'fr_FR')
 - **Returns:** RegExp object to match XLIFF file names
-- **Note:** Converts hyphens to underscores in locales and matches timestamp pattern
+- **Note:** Converts underscores to hyphens in locales and matches timestamp pattern
 
 #### 📥 Download Utilities
 
@@ -172,5 +172,24 @@ Reads a file and returns its contents as a string.
 ##### `globalSetup`
 
 Global setup function for Playwright tests. Ensures fixtures are deleted and global context is set up properly.
+
+#### 💡 Usage Example
+
+```javascript
+import {
+  createLanguage,
+  setSetting,
+  getAllTerms
+} from '@wpsyntex/e2e-test-utils';
+
+// Create a new language
+await createLanguage( requestUtils, 'fr_FR' );
+
+// Update a setting
+await setSetting( requestUtils, 'hide_default', true );
+
+// Get all terms from a taxonomy
+const terms = await getAllTerms( requestUtils, 'category' );
+```
 
 All these functions are designed to work with the Gutenberg request utils object and follow REST API patterns for interacting with Polylang's functionality. They provide a comprehensive set of tools for managing languages, settings, and taxonomies in E2E tests.
