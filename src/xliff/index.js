@@ -30,9 +30,9 @@ export const fillInXliffExportForm = async (
 /**
  * Returns a regex to match the xliff file name.
  *
- * @param {string} sourceLocale The source language locale.
- * @param {string} targetLocale The target language locale.
- * @return {RegExp} Regex to match the xliff file name.
+ * @param {string} sourceLocale The source language locale (e.g. 'en_US').
+ * @param {string} targetLocale The target language locale (e.g. 'fr_FR').
+ * @return {RegExp} Regex to match the xliff file name (e.g. en-US_fr-FR_2025-09-01_14-30-45.xliff).
  */
 export const getXliffRegex = ( sourceLocale, targetLocale ) => {
 	return new RegExp(
