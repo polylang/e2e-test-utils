@@ -131,6 +131,42 @@ Deletes all terms within a specific taxonomy.
   - `taxonomy`: Taxonomy slug
 - **Returns:** Promise resolving to the deletion results
 
+#### 📄 XLIFF Export Functions
+
+##### `fillInXliffExportForm( page, options )`
+Fills in the XLIFF export form for bulk translation export.
+- **Parameters:**
+  - `page`: Playwright page object
+  - `options`: Configuration object
+    - `postId`: Post ID to export
+    - `postTitle`: Post title to select
+    - `languageName`: Target language name
+- **Returns:** Promise that resolves when the export form is submitted
+- **Note:** Page should be on the post list table
+
+##### `getXliffRegex( sourceLocale, targetLocale )`
+Returns a regex pattern to match XLIFF file names with the specified locales and timestamp.
+- **Parameters:**
+  - `sourceLocale`: Source language locale (e.g., 'en_US')
+  - `targetLocale`: Target language locale (e.g., 'fr_FR')
+- **Returns:** RegExp object to match XLIFF file names
+- **Note:** Converts underscores to hyphens in locales and matches timestamp pattern
+
+#### 📥 Download Utilities
+
+##### `getDownload( page, submitButtonOptions )`
+Returns a download promise by clicking a submit button and waiting for the download to start.
+- **Parameters:**
+  - `page`: Playwright page object
+  - `submitButtonOptions`: Submit button options (default: `{ name: 'Submit' }`)
+- **Returns:** Promise resolving to the download object
+
+##### `getStringFromFile( filePath )`
+Reads a file and returns its contents as a string.
+- **Parameters:**
+  - `filePath`: The file path to read
+- **Returns:** String content of the file
+
 #### 🔧 Additional Exports
 
 ##### `globalSetup`
