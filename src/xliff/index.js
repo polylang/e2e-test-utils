@@ -24,7 +24,7 @@ export const fillInXliffExportForm = async (
 	await page.locator( '#doaction' ).click();
 	await page.locator( '#pll-translate' ).getByText( languageName ).click();
 
-	return page.getByText( 'Export selected content into' ).click();
+	await page.getByText( 'Export selected content into' ).click();
 };
 
 /**
