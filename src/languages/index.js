@@ -34,16 +34,26 @@ export async function getLanguage( requestUtils, slug ) {
 /**
  * Creates a language.
  *
- * @param {RequestUtils} requestUtils Gutenberg request utils object.
- * @param {string}       locale       Language locale to create.
+ * @param {RequestUtils} requestUtils        Gutenberg request utils object.
+ * @param {string}       locale              Language locale to create.
+ * @param {Object}       args                Additional arguments to pass to the request, optional. For the full list of arguments, see the REST API documentation.
+ * @param {string}       args.slug           Language slug to create.
+ * @param {string}       args.name           Language name to create.
+ * @param {string}       args.is_rtl         If the language is rtl.
+ * @param {string}       args.flag_code      The flag code of the language.
+ * @param {string}       args.page_on_front  The ID of the page on front for the language.
+ * @param {string}       args.page_for_posts The ID of the page for posts for the language.
+ * @param {string}       args.term_group     The term group (order) of the language.
+ * @param {string}       args.no_default_cat Whether to create the default category for the language.
  * @return {Promise} Request promise.
  */
-export async function createLanguage( requestUtils, locale ) {
+export async function createLanguage( requestUtils, locale, args = {} ) {
 	return requestUtils.rest( {
 		path: BASE_PATH,
 		method: 'POST',
 		params: {
 			locale,
+			...args,
 		},
 	} );
 }
