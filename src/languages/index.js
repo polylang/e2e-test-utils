@@ -42,7 +42,7 @@ export async function getLanguage( requestUtils, slug ) {
  * @param {boolean}      [args.is_rtl]         If the language is rtl.
  * @param {string}       [args.flag_code]      The flag code of the language.
  * @param {number}       [args.page_on_front]  The ID of the page on front for the language.
- * @param {string}       [args.page_for_posts] The ID of the page for posts for the language.
+ * @param {number}       [args.page_for_posts] The ID of the page for posts for the language.
  * @param {number}       [args.term_group]     The term group (order) of the language.
  * @param {boolean}      [args.no_default_cat] Whether to create the default category for the language.
  * @return {Promise} Request promise.
