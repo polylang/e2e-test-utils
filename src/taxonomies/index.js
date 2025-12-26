@@ -38,6 +38,27 @@ export const getTermBySlug = async ( requestUtils, taxonomy, slug ) => {
 };
 
 /**
+ * Creates a term.
+ *
+ * @param {RequestUtils} requestUtils       Gutenberg request utils object.
+ * @param {string}       taxonomy           Taxonomy slug (e.g., 'categories', 'tags').
+ * @param {Object}       [args = {}]        Additional arguments to pass to the request.
+ * @param {string}       [args.name]        Term name (required).
+ * @param {string}       [args.description] Term description.
+ * @param {string}       [args.slug]        Term slug.
+ * @param {number}       [args.parent]      Parent term ID.
+ * @param {string}       [args.lang]        Language slug.
+ * @return {Promise} Request promise.
+ */
+export const createTerm = async ( requestUtils, taxonomy, args = {} ) => {
+	return requestUtils.rest( {
+		method: 'POST',
+		path: `${ BASE_PATH }/${ taxonomy }`,
+		data: args,
+	} );
+};
+
+/**
  * Deletes all terms.
  *
  * @param {RequestUtils} requestUtils Gutenberg request utils object.
