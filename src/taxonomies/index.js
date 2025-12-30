@@ -50,7 +50,7 @@ export const getTermBySlug = async ( requestUtils, taxonomy, slug ) => {
  * @param {string}       [args.lang]        Language slug.
  * @return {Promise} Request promise.
  */
-export const createTerm = async ( requestUtils, taxonomy, args = {} ) => {
+export const createTerm = async ( requestUtils, taxonomy = 'categories', args = {} ) => {
 	return requestUtils.rest( {
 		method: 'POST',
 		path: `${ BASE_PATH }/${ taxonomy }`,
