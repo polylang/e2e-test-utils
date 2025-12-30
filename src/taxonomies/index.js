@@ -41,7 +41,7 @@ export const getTermBySlug = async ( requestUtils, taxonomy, slug ) => {
  * Creates a term.
  *
  * @param {RequestUtils} requestUtils       Gutenberg request utils object.
- * @param {string}       taxonomy           Taxonomy slug (e.g., 'categories', 'tags').
+ * @param {string}       taxonomy           Taxonomy slug used in related REST endpoint (e.g., 'categories', 'tags').
  * @param {Object}       [args = {}]        Additional arguments to pass to the request.
  * @param {string}       [args.name]        Term name (required).
  * @param {string}       [args.description] Term description.
