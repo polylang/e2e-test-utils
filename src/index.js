@@ -11,6 +11,7 @@ import {
 	getAllTerms,
 	deleteAllTerms,
 	getTermBySlug,
+	createTerm,
 } from './taxonomies/index.js';
 import { fillInXliffExportForm, getXliffRegex } from './xliff/index.js';
 import { getDownload, getStringFromFile } from './downloads/index.js';
@@ -30,6 +31,7 @@ export {
 	getAllTerms,
 	deleteAllTerms,
 	getTermBySlug,
+	createTerm,
 	fillInXliffExportForm,
 	getDownload,
 	getXliffRegex,
