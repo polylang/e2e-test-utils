@@ -37,6 +37,8 @@ export const getTermBySlug = async ( requestUtils, taxonomy, slug ) => {
 	} );
 };
 
+let termCounter = 0;
+
 /**
  * Creates a term.
  *
@@ -55,10 +57,18 @@ export const createTerm = async (
 	taxonomy = 'categories',
 	args = {}
 ) => {
+	const defaultArgs = {
+		...args,
+	};
+
+	if ( ! defaultArgs.name ) {
+		defaultArgs.name = `Term ${ ++termCounter }`;
+	}
+
 	return requestUtils.rest( {
 		method: 'POST',
 		path: `${ BASE_PATH }/${ taxonomy }`,
-		data: args,
+		data: defaultArgs,
 	} );
 };
 
