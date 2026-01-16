@@ -84,7 +84,7 @@ export const deleteAllTerms = async ( requestUtils, taxonomy ) => {
 	await requestUtils.batchRest(
 		terms.map( ( term ) => ( {
 			method: 'DELETE',
-			path: `${ BASE_PATH }/${ taxonomy }/${ term.id }`,
+			path: `${ BASE_PATH }/${ taxonomy }/${ term.id }?force=true`,
 		} ) )
 	);
 };
