@@ -1,5 +1,9 @@
 // @ts-check
-import { expect, Admin, RequestUtils } from '@wordpress/e2e-test-utils-playwright';
+import {
+	expect,
+	Admin,
+	RequestUtils,
+} from '@wordpress/e2e-test-utils-playwright';
 import { execSync } from 'child_process';
 
 /**
