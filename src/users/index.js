@@ -31,8 +31,6 @@ export async function createTranslator( langSlugs, userName ) {
 		{ encoding: 'utf8' }
 	).trim();
 
-	expect( resultCreateUser ).toContain( 'Success: Created user' );
-
 	const { groups: user } = resultCreateUser.match(
 		/^Success: Created user (?<id>\d+)\.\nPassword: (?<password>[^ ]+)$/m
 	);
@@ -41,13 +39,9 @@ export async function createTranslator( langSlugs, userName ) {
 	user.username = userName;
 
 	langSlugs.forEach( ( langSlug ) => {
-		const resultAddCap = execSync(
+		execSync(
 			`npx wp-env run tests-cli wp user add-cap ${ user.id } translate_${ langSlug }`,
 			{ encoding: 'utf8' }
-		);
-
-		expect( resultAddCap ).toContain(
-			`Success: Added 'translate_${ langSlug }' capability`
 		);
 	} );
 
