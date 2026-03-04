@@ -18,7 +18,7 @@ import { execSync } from 'child_process';
  *
  * @param {Array<string>} langSlugs Language slugs.
  * @param {string}        userName  User name.
- * @return {Promise<User>} The user.
+ * @return {Promise<User&{id: Number}>} The user.
  */
 export async function createTranslator( langSlugs, userName ) {
 	userName =
@@ -26,26 +26,19 @@ export async function createTranslator( langSlugs, userName ) {
 			? userName
 			: `${ langSlugs.join( '-' ) }-translator`;
 	const email = `${ userName.toLowerCase() }@example.com`;
-	const resultCreateUser = execSync(
-		`npx wp-env run tests-cli wp user create ${ userName } ${ email } --role=editor`,
+	const userId = parseInt( execSync(
+		`npx wp-env run tests-cli wp user create ${ userName } ${ email } --role=editor --user_pass=password --porcelain`,
 		{ encoding: 'utf8' }
-	).trim();
-
-	const { groups: user } = resultCreateUser.match(
-		/^Success: Created user (?<id>\d+)\.\nPassword: (?<password>[^ ]+)$/m
-	);
-
-	user.id = parseInt( user.id, 10 );
-	user.username = userName;
+	).trim(), 10 );
 
 	langSlugs.forEach( ( langSlug ) => {
 		execSync(
-			`npx wp-env run tests-cli wp user add-cap ${ user.id } translate_${ langSlug }`,
+			`npx wp-env run tests-cli wp user add-cap ${ userId } translate_${ langSlug }`,
 			{ encoding: 'utf8' }
 		);
 	} );
 
-	return user;
+	return { id: userId, username: userName, password: 'password' };
 }
 
 /**
