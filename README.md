@@ -173,6 +173,27 @@ Reads a file and returns its contents as a string.
 
 Global setup function for Playwright tests. Ensures fixtures are deleted and global context is set up properly.
 
+#### 👤 User Utilities
+
+##### `createTranslator( langSlugs, userName = '' )`
+
+Creates a translator user, based on the `editor` role.
+
+- **Parameters:**
+  - `langSlugs`: List of language slugs.
+  - `userName`: Optional. A user name. Defaults to `XX-YY-translator`, where `XX` and `YY` are language slugs.
+- **Returns:** Promise resolving to a user object containing ID, user name, and password.
+
+##### `switchToUser( user, admin, requestUtils )`
+
+Switches to the given user.
+
+- **Parameters:**
+  - `user`: The user to switch to (an object containing a user name and a password).
+  - `admin`: Instance of `Admin`.
+  - `requestUtils`: Gutenberg request utils object.
+- **Returns:** Promise resolving to the `Page` object.
+
 #### 💡 Usage Example
 
 ```javascript
