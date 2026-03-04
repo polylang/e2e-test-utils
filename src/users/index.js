@@ -26,10 +26,13 @@ export async function createTranslator( langSlugs, userName ) {
 			? userName
 			: `${ langSlugs.join( '-' ) }-translator`;
 	const email = `${ userName.toLowerCase() }@example.com`;
-	const userId = parseInt( execSync(
-		`npx wp-env run tests-cli wp user create ${ userName } ${ email } --role=editor --user_pass=password --porcelain`,
-		{ encoding: 'utf8' }
-	).trim(), 10 );
+	const userId = parseInt(
+		execSync(
+			`npx wp-env run tests-cli wp user create ${ userName } ${ email } --role=editor --user_pass=password --porcelain`,
+			{ encoding: 'utf8' }
+		).trim(),
+		10
+	);
 
 	langSlugs.forEach( ( langSlug ) => {
 		execSync(
