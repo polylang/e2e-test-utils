@@ -18,7 +18,7 @@ import { execSync } from 'child_process';
  *
  * @param {Array<string>} langSlugs Language slugs.
  * @param {string}        userName  Optional. User name.
- *                                   Defaults to `XX-YY-translator`, where `XX` and `YY` are language slugs.
+ *                                  Defaults to `XX-YY-translator`, where `XX` and `YY` are language slugs.
  * @return {Promise<User&{id: number}>} Promise resolving to a user object containing ID, user name, and password.
  */
 export async function createTranslator( langSlugs, userName = '' ) {
