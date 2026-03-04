@@ -18,7 +18,8 @@ import { execSync } from 'child_process';
  *
  * @param {Array<string>} langSlugs Language slugs.
  * @param {string}        userName  Optional. User name.
- * @return {Promise<User&{id: number}>} The user.
+ *                                   Defaults to `XX-YY-translator`, where `XX` and `YY` are language slugs.
+ * @return {Promise<User&{id: number}>} Promise resolving to a user object containing ID, user name, and password.
  */
 export async function createTranslator( langSlugs, userName = '' ) {
 	userName =
@@ -49,9 +50,9 @@ export async function createTranslator( langSlugs, userName = '' ) {
  * Inspired from https://github.com/WordPress/gutenberg/blob/9ee534a42cd546fc2da23ce0f31607467c78c94c/test/e2e/specs/editor/collaboration/fixtures/collaboration-utils.ts#L104.
  *
  * @param {User}         user         The user to switch to.
- * @param {Admin}        admin        The language of the post and page.
+ * @param {Admin}        admin        Instance of `Admin`.
  * @param {RequestUtils} requestUtils Gutenberg request utils object.
- * @return {Promise<Page>} The page object.
+ * @return {Promise<Page>} Promise resolving to the `Page` object.
  */
 export async function switchToUser( user, admin, requestUtils ) {
 	const translatorContext = await admin.browser.newContext( {
