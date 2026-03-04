@@ -17,14 +17,14 @@ import { execSync } from 'child_process';
  * Creates a translator user.
  *
  * @param {Array<string>} langSlugs Language slugs.
- * @param {string}        userName  User name.
- * @return {Promise<User&{id: Number}>} The user.
+ * @param {string}        userName  Optional. User name.
+ * @return {Promise<User&{id: number}>} The user.
  */
-export async function createTranslator( langSlugs, userName ) {
+export async function createTranslator( langSlugs, userName = '' ) {
 	userName =
-		typeof userName === `string`
-			? userName
-			: `${ langSlugs.join( '-' ) }-translator`;
+		'' === userName
+			? `${ langSlugs.join( '-' ).toUpperCase() }-translator`
+			: userName;
 	const email = `${ userName.toLowerCase() }@example.com`;
 	const userId = parseInt(
 		execSync(
