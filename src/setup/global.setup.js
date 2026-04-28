@@ -52,6 +52,12 @@ export default async function globalSetup( config ) {
 					'core/edit-widgets': {
 						welcomeGuide: false,
 					},
+					'core/edit-site': {
+						welcomeGuide: false,
+						welcomeGuideStyles: false,
+						welcomeGuidePage: false,
+						welcomeGuideTemplate: false,
+					},
 				},
 			},
 		},
