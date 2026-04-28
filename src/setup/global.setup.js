@@ -48,6 +48,7 @@ export default async function globalSetup( config ) {
 					'core/edit-post': {
 						welcomeGuide: false,
 						welcomeGuideTemplate: false,
+						fullscreenMode: false,
 					},
 					'core/edit-widgets': {
 						welcomeGuide: false,
