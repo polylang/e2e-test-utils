@@ -37,5 +37,32 @@ export default async function globalSetup( config ) {
 		resetAllSettings( requestUtils ),
 	] );
 
+	// Disable editors welcome guides globally for all projects.
+	// Must be called after resetPreferences() which would otherwise overwrite this.
+	await requestUtils.rest( {
+		path: '/wp/v2/users/me',
+		method: 'PUT',
+		data: {
+			meta: {
+				persisted_preferences: {
+					'core/edit-post': {
+						welcomeGuide: false,
+						welcomeGuideTemplate: false,
+						fullscreenMode: false,
+					},
+					'core/edit-widgets': {
+						welcomeGuide: false,
+					},
+					'core/edit-site': {
+						welcomeGuide: false,
+						welcomeGuideStyles: false,
+						welcomeGuidePage: false,
+						welcomeGuideTemplate: false,
+					},
+				},
+			},
+		},
+	} );
+
 	await requestContext.dispose();
 }
