@@ -1,9 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath( import.meta.url );
-const __dirname = path.dirname( __filename );
 
 const STORAGE_STATE_PATH =
 	process.env.STORAGE_STATE_PATH ||
@@ -20,7 +16,7 @@ const STORAGE_STATE_PATH =
 export function getPlaywrightConfig( options = {} ) {
 	return defineConfig( {
 		testDir: './specs',
-		globalSetup: path.resolve( __dirname, '../setup/global.setup.js' ),
+		globalSetup: path.resolve( __dirname, '../setup/global.setup.cjs' ),
 		fullyParallel: false,
 		forbidOnly: !! process.env.CI,
 		retries: process.env.CI ? 2 : 0,

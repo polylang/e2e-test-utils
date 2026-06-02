@@ -1,5 +1,3 @@
-import { request } from '@playwright/test';
-import { RequestUtils } from '@wordpress/e2e-test-utils-playwright';
 import { deleteAllLanguages } from '../languages/index.js';
 import { resetAllSettings } from '../settings/index.js';
 
@@ -10,6 +8,10 @@ import { resetAllSettings } from '../settings/index.js';
  * @param {Object} config Playwright config object.
  */
 export default async function globalSetup( config ) {
+	const { RequestUtils } = await import(
+		'@wordpress/e2e-test-utils-playwright'
+	);
+	const { request } = await import( '@playwright/test' );
 	const { storageState, baseURL } = config.projects[ 0 ].use;
 	const storageStatePath =
 		typeof storageState === 'string' ? storageState : undefined;

@@ -1,5 +1,4 @@
 // @ts-check
-import { expect } from '@wordpress/e2e-test-utils-playwright';
 
 /**
  * Fills in the XLIFF export form.
@@ -15,6 +14,8 @@ export const fillInXliffExportForm = async (
 	page,
 	{ postId, postTitle, languageName }
 ) => {
+	const { expect } = await import( '@wordpress/e2e-test-utils-playwright' );
+
 	await expect( page.locator( `#post-${ postId }` ) ).toBeVisible();
 
 	await page.getByRole( 'checkbox', { name: postTitle } ).check();
