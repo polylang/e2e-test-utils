@@ -1,6 +1,6 @@
 {
 	"name": "@wpsyntex/e2e-test-utils",
-	"version": "0.2.0",
+	"version": "0.1.0",
 	"description": "End-to-end test utilities for Polylang projects.",
 	"main": "./build/index.cjs",
 	"exports": {
