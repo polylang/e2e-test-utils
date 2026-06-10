@@ -1,13 +1,10 @@
 // @ts-check
-import {
-	expect,
-	Admin,
-	RequestUtils,
-} from '@wordpress/e2e-test-utils-playwright';
 import { execSync } from 'child_process';
 
 /**
  * @typedef {import('@playwright/test').Page} Page
+ * @typedef {import('@wordpress/e2e-test-utils-playwright').Admin} Admin
+ * @typedef {import('@wordpress/e2e-test-utils-playwright').RequestUtils} RequestUtils
  * @typedef {Object} User
  * @property {string} username The user name.
  * @property {string} password The user's password.
@@ -55,6 +52,7 @@ export async function createTranslator( langSlugs, userName = '' ) {
  * @return {Promise<Page>} Promise resolving to the `Page` object.
  */
 export async function switchToUser( user, admin, requestUtils ) {
+	const { expect } = await import( '@wordpress/e2e-test-utils-playwright' );
 	const translatorContext = await admin.browser.newContext( {
 		baseURL: requestUtils.baseURL,
 	} );
@@ -66,7 +64,7 @@ export async function switchToUser( user, admin, requestUtils ) {
 	await page.getByRole( 'button', { name: 'Log In' } ).click();
 	await page.waitForURL( '**/wp-admin/**' );
 
-	expect(
+	await expect(
 		page.getByRole( 'menuitem', {
 			name: `Howdy, ${ user.username }`,
 		} )

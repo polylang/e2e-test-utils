@@ -6,10 +6,11 @@ on:
   pull_request:
     branches: master
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   js:
-    name: ESLint
+    name: Build and Test
 
     runs-on: ubuntu-latest
 
@@ -17,9 +18,22 @@ jobs:
     - name: Check out the source code
       uses: actions/checkout@v4
 
-    - name: Run ESLint
-      uses: polylang/actions/eslint@main
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        do-js: true
-        js-path: './src'
-        do-style: false
+        node-version: 22
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Install peer dependencies
+      run: npm install @playwright/test @wordpress/e2e-test-utils-playwright
+
+    - name: Build package
+      run: npm run build
+
+    - name: Run ESLint
+      run: npm run lint:js
+
+    - name: Verify package entry point (smoke test)
+      run: node -e "require('@wpsyntex/e2e-test-utils')"
