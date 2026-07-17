@@ -24,8 +24,10 @@ jobs:
         node-version: 22
 
     - name: Install dependencies
-      # Full install so eslint is hoisted for wp-scripts (resolve-bin looks from the project root).
-      run: npm ci
+      run: npm ci --omit=peer
+
+    - name: Install peer dependencies
+      run: npm install @playwright/test @wordpress/e2e-test-utils-playwright
 
     - name: Run ESLint
       run: npm run lint:js
