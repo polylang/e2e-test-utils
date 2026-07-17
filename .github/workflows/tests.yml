@@ -24,7 +24,8 @@ jobs:
         node-version: 22
 
     - name: Install dependencies
-      run: npm ci --omit=peer
+      # Full install so eslint is hoisted for wp-scripts (resolve-bin looks from the project root).
+      run: npm ci
 
     - name: Run ESLint
       run: npm run lint:js
