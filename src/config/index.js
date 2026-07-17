@@ -37,7 +37,8 @@ export function getPlaywrightConfig( options = {} ) {
 			},
 		],
 		webServer: {
-			command: 'npm run env:start',
+			// wp-env start exits after containers are up; keep the process alive so Playwright can wait for a 2xx response.
+			command: 'npm run env:start && sleep 86400', // 24 hours.
 			url: 'http://localhost:8889',
 			reuseExistingServer: ! process.env.CI,
 			cwd: process.cwd(),
