@@ -4,4 +4,3 @@ build/
 
 # Files
 .DS_Store
-package-lock.json

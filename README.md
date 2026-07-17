@@ -234,7 +234,7 @@ All these functions are designed to work with the Gutenberg request utils object
 
 ## 📤 Publishing
 
-The **Publish to npm** workflow reuses **Static Analysis** (build, lint, smoke test) before publishing.
+The **Publish to npm** workflow reuses **Tests** (ESLint and smoke test) before publishing.
 
 Repository secret required: `NPM_TOKEN` (npm access token with publish rights for `@wpsyntex`).
 

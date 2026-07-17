@@ -6,13 +6,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  static-analysis:
-    uses: ./.github/workflows/static-analysis.yml
+  tests:
+    uses: ./.github/workflows/tests.yml
 
   publish:
     name: Publish @wpsyntex/e2e-test-utils
 
-    needs: static-analysis
+    needs: tests
 
     runs-on: ubuntu-latest
 
@@ -33,7 +33,7 @@ jobs:
         registry-url: https://registry.npmjs.org
 
     - name: Install dependencies
-      run: npm install --omit=peer
+      run: npm ci --omit=peer
 
     - name: Set bleeding edge version
       if: github.event_name == 'workflow_dispatch'

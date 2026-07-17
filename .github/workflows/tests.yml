@@ -1,4 +1,4 @@
-name: Static Analysis
+name: Tests
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
   workflow_call:
 
 jobs:
-  js:
-    name: Build and Test
+  eslint:
+    name: ESLint
 
     runs-on: ubuntu-latest
 
@@ -24,7 +24,30 @@ jobs:
         node-version: 22
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci --omit=peer
+
+    - name: Install peer dependencies
+      run: npm install @playwright/test @wordpress/e2e-test-utils-playwright
+
+    - name: Run ESLint
+      run: npm run lint:js
+
+  smoke:
+    name: Smoke test
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the source code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+
+    - name: Install dependencies
+      run: npm ci --omit=peer
 
     - name: Install peer dependencies
       run: npm install @playwright/test @wordpress/e2e-test-utils-playwright
@@ -32,8 +55,5 @@ jobs:
     - name: Build package
       run: npm run build
 
-    - name: Run ESLint
-      run: npm run lint:js
-
-    - name: Verify package entry point (smoke test)
+    - name: Verify package entry point
       run: node -e "require('@wpsyntex/e2e-test-utils')"

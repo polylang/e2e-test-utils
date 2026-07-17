@@ -1,6 +1,6 @@
 {
 	"name": "@wpsyntex/e2e-test-utils",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "End-to-end test utilities for Polylang projects.",
 	"main": "./build/index.cjs",
 	"exports": {
@@ -47,6 +47,7 @@
 	"devDependencies": {
 		"@wordpress/scripts": "^32.6.0",
 		"esbuild": "^0.25.0",
+		"eslint": "^9.39.5",
 		"glob": "^11.0.0",
 		"rimraf": "^6.0.1"
 	}
