@@ -6,13 +6,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  static-analysis:
-    uses: ./.github/workflows/static-analysis.yml
+  tests:
+    uses: ./.github/workflows/tests.yml
 
   publish:
     name: Publish @wpsyntex/e2e-test-utils
 
-    needs: static-analysis
+    needs: tests
 
     runs-on: ubuntu-latest
 
