@@ -44,7 +44,7 @@ export default getPlaywrightConfig( {
 } );
 ```
 
-`getPlaywrightConfig()` merges your options with sensible defaults (Chromium, HTML reporter, `wp-env` web server, storage state path, etc.). The default `globalSetup` points to the packaged `build/setup/global.setup.cjs` when not overridden.
+`getPlaywrightConfig()` merges your options with sensible defaults (Chromium, HTML reporter, `wp-env` web server, storage state path, etc.). The default `globalSetup` points to the packaged `build/setup/global.setup.cjs` when not overridden. The default `webServer` runs `npm run env:start` from `process.cwd()` (typically the consuming project root) and reuses an existing server locally (`reuseExistingServer: !process.env.CI`).
 
 #### Configuration Options
 

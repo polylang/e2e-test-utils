@@ -39,7 +39,8 @@ export function getPlaywrightConfig( options = {} ) {
 		webServer: {
 			command: 'npm run env:start',
 			url: 'http://localhost:8889',
-			reuseExistingServer: true,
+			reuseExistingServer: ! process.env.CI,
+			cwd: process.cwd(),
 			timeout: 120 * 1000,
 			...options.webServer,
 		},
