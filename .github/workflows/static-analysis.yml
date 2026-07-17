@@ -24,7 +24,7 @@ jobs:
         node-version: 22
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci
 
     - name: Install peer dependencies
       run: npm install @playwright/test @wordpress/e2e-test-utils-playwright

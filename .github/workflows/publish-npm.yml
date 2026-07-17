@@ -33,7 +33,7 @@ jobs:
         registry-url: https://registry.npmjs.org
 
     - name: Install dependencies
-      run: npm install --omit=peer
+      run: npm ci --omit=peer
 
     - name: Set bleeding edge version
       if: github.event_name == 'workflow_dispatch'
