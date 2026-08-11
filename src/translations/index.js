@@ -19,3 +19,21 @@ export async function saveTranslations( requestUtils, id, translations = {} ) {
 		},
 	} );
 }
+
+/**
+ * Saves translations for a term identified by termId.
+ *
+ * @param {Object} requestUtils - Utility object for making REST API requests.
+ * @param {number|string} termId - The ID of the term for which translations are being saved.
+ * @param {Object} [translations={}] - An object representing the translations to be saved, where each key is a language code and the value is the translated term.
+ * @return {Promise<Object>} A promise that resolves to the response of the REST API call.
+ */
+export async function saveTermTranslations( requestUtils, termId, translations = {} ) {
+	return requestUtils.rest( {
+		path: `/wp/v2/categories/${ termId }`,
+		method: 'POST',
+		data: {
+			translations,
+		},
+	} );
+}
