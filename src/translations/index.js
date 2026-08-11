@@ -21,7 +21,7 @@ export async function saveTranslations( requestUtils, id, translations = {} ) {
 }
 
 /**
- * Saves translations for a term identified by termId.
+ * Saves the translations for a term.
  *
  * @param {Object} requestUtils      Utility object for making REST API requests.
  * @param {number} id                Term ID.
