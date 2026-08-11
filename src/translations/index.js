@@ -19,3 +19,25 @@ export async function saveTranslations( requestUtils, id, translations = {} ) {
 		},
 	} );
 }
+
+/**
+ * Saves the translations for a term.
+ *
+ * @param {Object} requestUtils      Utility object for making REST API requests.
+ * @param {number} id                Term ID.
+ * @param {Object} [translations={}] Map of language codes to term IDs. Example: { en: 10, fr: 22 }.
+ * @return {Promise<Object>} A promise that resolves to the response of the REST API call.
+ */
+export async function saveTermTranslations(
+	requestUtils,
+	id,
+	translations = {}
+) {
+	return requestUtils.rest( {
+		path: `/wp/v2/categories/${ id }`,
+		method: 'POST',
+		data: {
+			translations,
+		},
+	} );
+}

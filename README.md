@@ -148,6 +148,16 @@ Deletes all terms within a specific taxonomy.
   - `taxonomy`: Taxonomy slug
 - **Returns:** Promise resolving to the deletion results
 
+#### 🔗 Translation Management Functions
+
+##### `saveTermTranslations( requestUtils, id, translations )`
+Saves the translations for a term.
+- **Parameters:**
+  - `requestUtils`: Gutenberg request utils object
+  - `id`: Term ID
+  - `translations`: Map of language codes to term IDs. Example: `{ en: 10, fr: 22 }`. Defaults to `{}`.
+- **Returns:** Promise resolving to the REST API response
+
 #### 📄 XLIFF Export Functions
 
 ##### `fillInXliffExportForm( page, options )`

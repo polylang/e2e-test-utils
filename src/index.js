@@ -7,7 +7,10 @@ export {
 	createLanguage,
 	deleteLanguage,
 } from './languages/index.js';
-export { saveTranslations } from './translations/index.js';
+export {
+	saveTranslations,
+	saveTermTranslations,
+} from './translations/index.js';
 export { resetAllSettings, setSetting, getSettings } from './settings/index.js';
 export {
 	getAllTerms,
