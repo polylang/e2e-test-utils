@@ -16,7 +16,7 @@ updates:
     directory: /
     schedule:
       interval: cron
-      cronjob: "0 7 * * MON#1"
+      cronjob: "0 7 * * MON#1" # First Monday of each month.
       timezone: Europe/Paris
     allow:
       - dependency-type: development
