@@ -1,0 +1,18 @@
+# Dependabot does not version-bump peerDependencies; only dependencies are covered here.
+# allow — if a package does not match, Dependabot does not open a version PR or a security PR for it.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: cron
+      cronjob: "0 7 * * MON#1" # First Monday of each month.
+      timezone: Europe/Paris
+    allow:
+      - dependency-type: production
+      - dependency-type: development
+    groups:
+      production:
+        dependency-type: production
+      development:
+        dependency-type: development
