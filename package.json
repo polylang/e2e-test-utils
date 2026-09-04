@@ -47,8 +47,8 @@
 	"devDependencies": {
 		"@wordpress/eslint-plugin": "^25.8.0",
 		"esbuild": "^0.28.1",
-		"eslint": "^9.39.5",
-		"glob": "^11.0.0",
+		"eslint": "^10.9.1",
+		"glob": "^13.0.6",
 		"rimraf": "^6.0.1"
 	},
 	"allowScripts": {
