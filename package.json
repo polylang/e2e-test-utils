@@ -45,7 +45,7 @@
 		"@wordpress/e2e-test-utils-playwright": ">=1"
 	},
 	"devDependencies": {
-		"@wordpress/eslint-plugin": "^25.8.0",
+		"@wordpress/eslint-plugin": "^27.0.0",
 		"esbuild": "^0.28.1",
 		"eslint": "^10.9.1",
 		"glob": "^13.0.6",
