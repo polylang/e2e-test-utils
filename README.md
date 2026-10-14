@@ -41,6 +41,8 @@ import { getPlaywrightConfig } from '@wpsyntex/e2e-test-utils';
 export default getPlaywrightConfig( {
   globalSetup: './global.setup.mjs',
   globalTeardown: './global.teardown.mjs',
+  // Required with wp-env 11+ when using a separate test config file:
+  wpCliCommand: 'npx wp-env --config=.wp-env.test.json run cli',
 } );
 ```
 
@@ -52,6 +54,7 @@ The `getPlaywrightConfig` function accepts an options object that can override a
 
 - `use`: Override default Playwright use options
 - `webServer`: Override default webServer configuration
+- `wpCliCommand`: Base `wp-env run …` command for WP-CLI helpers such as `createTranslator`. Defaults to `npx wp-env run tests-cli`. Can also be set via the `WP_ENV_CLI_COMMAND` environment variable.
 - Any other Playwright configuration options
 
 #### Default Configuration
@@ -193,6 +196,21 @@ Reads a file and returns its contents as a string.
 - **Parameters:**
   - `filePath`: The file path to read
 - **Returns:** String content of the file
+
+#### 🔧 WP-CLI Utilities
+
+##### `wpEnvRun( command, shellPrefix = '' )`
+
+Runs a WP-CLI command in the wp-env test environment. Uses the command configured via `getPlaywrightConfig({ wpCliCommand })` or the `WP_ENV_CLI_COMMAND` environment variable.
+
+- **Parameters:**
+  - `command`: The WP-CLI command to run (e.g. `wp pll setting get`)
+  - `shellPrefix`: Optional shell prefix (e.g. `echo "y" |`)
+- **Returns:** The command output as a string
+
+##### `getWpCliCommand()`
+
+Returns the base `wp-env run …` command used by `wpEnvRun` and `createTranslator`. Configure it via `getPlaywrightConfig({ wpCliCommand })` or the `WP_ENV_CLI_COMMAND` environment variable.
 
 #### 🔧 Additional Exports
 

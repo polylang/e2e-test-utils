@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import path from 'path';
+import { setWpCliCommand } from './wp-cli.js';
 
 const STORAGE_STATE_PATH =
 	process.env.STORAGE_STATE_PATH ||
@@ -10,10 +11,16 @@ const STORAGE_STATE_PATH =
  *
  * @since 0.1.0
  *
- * @param {import('@playwright/test').PlaywrightTestConfig} options Options to merge with the default config.
+ * @param {import('@playwright/test').PlaywrightTestConfig & { wpCliCommand?: string }} options Options to merge with the default config.
  * @return {import('@playwright/test').PlaywrightTestConfig} Playwright config object.
  */
 export function getPlaywrightConfig( options = {} ) {
+	const { wpCliCommand, ...playwrightOptions } = options;
+
+	if ( wpCliCommand ) {
+		setWpCliCommand( wpCliCommand );
+	}
+
 	return defineConfig( {
 		testDir: './specs',
 		globalSetup: path.resolve( __dirname, '../setup/global.setup.cjs' ),
@@ -28,7 +35,7 @@ export function getPlaywrightConfig( options = {} ) {
 			trace: 'on-first-retry',
 			headless: true,
 			storageState: STORAGE_STATE_PATH,
-			...options.use,
+			...playwrightOptions.use,
 		},
 		projects: [
 			{
@@ -43,8 +50,8 @@ export function getPlaywrightConfig( options = {} ) {
 			reuseExistingServer: true,
 			cwd: process.cwd(),
 			timeout: 120 * 1000,
-			...options.webServer,
+			...playwrightOptions.webServer,
 		},
-		...options,
+		...playwrightOptions,
 	} );
 }
