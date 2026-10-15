@@ -1,5 +1,5 @@
 // @ts-check
-import { execSync } from 'child_process';
+import { runWpCli } from '../config/wp-cli.js';
 
 /**
  * @typedef {import('@playwright/test').Page} Page
@@ -25,18 +25,14 @@ export async function createTranslator( langSlugs, userName = '' ) {
 			: userName;
 	const email = `${ userName.toLowerCase() }@example.com`;
 	const userId = parseInt(
-		execSync(
-			`npx wp-env run tests-cli wp user create ${ userName } ${ email } --role=editor --user_pass=password --porcelain`,
-			{ encoding: 'utf8' }
+		runWpCli(
+			`wp user create ${ userName } ${ email } --role=editor --user_pass=password --porcelain`
 		).trim(),
 		10
 	);
 
 	langSlugs.forEach( ( langSlug ) => {
-		execSync(
-			`npx wp-env run tests-cli wp user add-cap ${ userId } translate_${ langSlug }`,
-			{ encoding: 'utf8' }
-		);
+		runWpCli( `wp user add-cap ${ userId } translate_${ langSlug }` );
 	} );
 
 	return { id: userId, username: userName, password: 'password' };
