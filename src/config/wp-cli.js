@@ -38,7 +38,7 @@ export function setWpCliCommand( command ) {
  * @param {string} shellPrefix Optional shell prefix (e.g. `echo "y" |`).
  * @return {string} The command output.
  */
-export function wpEnvRun( command, shellPrefix = '' ) {
+export function runWpCli( command, shellPrefix = '' ) {
 	const cliCommand = `${ getWpCliCommand() } ${ command }`;
 	const fullCommand = shellPrefix
 		? `${ shellPrefix } ${ cliCommand }`

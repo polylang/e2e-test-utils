@@ -199,7 +199,7 @@ Reads a file and returns its contents as a string.
 
 #### 🔧 WP-CLI Utilities
 
-##### `wpEnvRun( command, shellPrefix = '' )`
+##### `runWpCli( command, shellPrefix = '' )`
 
 Runs a WP-CLI command in the wp-env test environment. Uses the command configured via `getPlaywrightConfig({ wpCliCommand })` or the `WP_ENV_CLI_COMMAND` environment variable.
 
@@ -210,7 +210,7 @@ Runs a WP-CLI command in the wp-env test environment. Uses the command configure
 
 ##### `getWpCliCommand()`
 
-Returns the base `wp-env run …` command used by `wpEnvRun` and `createTranslator`. Configure it via `getPlaywrightConfig({ wpCliCommand })` or the `WP_ENV_CLI_COMMAND` environment variable.
+Returns the base `wp-env run …` command used by `runWpCli` and `createTranslator`. Configure it via `getPlaywrightConfig({ wpCliCommand })` or the `WP_ENV_CLI_COMMAND` environment variable.
 
 #### 🔧 Additional Exports
 
