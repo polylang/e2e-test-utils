@@ -41,7 +41,7 @@ export function getPlaywrightConfig( options = {} ) {
 			},
 		],
 		webServer: {
-			command: "npm run env:start && sleep 86400",
+			command: 'npm run env:start && sleep 86400',
 			url: 'http://localhost:8889',
 			reuseExistingServer: true,
 			cwd: process.cwd(),
