@@ -1,5 +1,10 @@
 import { deleteAllLanguages } from '../languages/index.js';
 import { resetAllSettings } from '../settings/index.js';
+import {
+	createPhpDebugLogTracker,
+	resetDebugLog,
+	wrapRequestUtilsRest,
+} from '../debug-log/index.js';
 
 /**
  * Partially copied from Gutenberg and converted from Typescript.
@@ -16,6 +21,10 @@ export default async function globalSetup( config ) {
 	const storageStatePath =
 		typeof storageState === 'string' ? storageState : undefined;
 
+	const debugLogTracker = createPhpDebugLogTracker();
+	resetDebugLog();
+	debugLogTracker.ignoreExisting();
+
 	const requestContext = await request.newContext( {
 		baseURL,
 	} );
@@ -23,6 +32,8 @@ export default async function globalSetup( config ) {
 	const requestUtils = await RequestUtils.setup( {
 		storageStatePath,
 	} );
+
+	wrapRequestUtilsRest( requestUtils );
 
 	// Authenticate and save the storageState to disk.
 	await requestUtils.setupRest();
@@ -67,4 +78,8 @@ export default async function globalSetup( config ) {
 	} );
 
 	await requestContext.dispose();
+
+	debugLogTracker.assertNoNewPhpErrors(
+		'PHP errors during Playwright globalSetup'
+	);
 }

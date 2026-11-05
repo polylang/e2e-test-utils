@@ -62,4 +62,4 @@ jobs:
       run: npm run build
 
     - name: Verify package entry point
-      run: node -e "require('@wpsyntex/e2e-test-utils')"
+      run: node -e "const m = require('@wpsyntex/e2e-test-utils'); if (typeof m.test !== 'function' || typeof m.expect !== 'function') { throw new Error('missing test/expect exports'); }"

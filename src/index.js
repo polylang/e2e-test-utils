@@ -1,6 +1,7 @@
 export { getPlaywrightConfig } from './config/index.js';
 export { getWpCliCommand, runWpCli } from './config/wp-cli.js';
 export { default as globalSetup } from './setup/global.setup.js';
+export { test, expect } from './test/index.js';
 export {
 	getAllLanguages,
 	deleteAllLanguages,
